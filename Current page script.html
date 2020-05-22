@@ -1,0 +1,25 @@
+<!-- current page -->
+<script>
+    $(document).ready(function () {
+
+        var pathURL = location.pathname, // pega o caminho da URL
+            lastChar = pathURL[pathURL.length - 1], // pega o último character do caminho
+            links = document.querySelectorAll('.lista-seo a'); // pega todos os links de SEO
+
+        // caso o último character do caminho seja "/":
+        if (lastChar === '/') {
+            pathURL = pathURL.substr(0, pathURL.length - 1); // remove a "/" da string
+        }
+
+        // para cada link da lista:
+        for (let i = 0; i < links.length; i++) {
+            const link = links[i].pathname; // atribui o caminho do link atual
+
+            // se o caminho do link da lista e da URL da página forem iguais:
+            if (link == pathURL) {
+                links[i].classList.add('current'); // adiciona a classe no link especifico
+                break;
+            }
+        }
+    });
+</script>
